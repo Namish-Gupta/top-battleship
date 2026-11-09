@@ -22,7 +22,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       // Generates an HTML5 file that automatically includes all webpack bundles in the body using script tags.
-      template: './src/index.html',
+      template: './src/template.html',
       title: 'Battleship TDD',
     }),
   ],
