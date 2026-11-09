@@ -6,6 +6,8 @@ export default class DOMController {
 		this.playerBoardEl = document.getElementById('player-board');
 		this.computerBoardEl = document.getElementById('computer-board');
 		this.messageDisplay = document.getElementById('message-display');
+
+		this.computerBoardEl.style.pointerEvents = 'auto';
 		
 		this.renderBoards();
 	}
@@ -68,6 +70,8 @@ export default class DOMController {
 				this.messageDisplay.textContent = `${winnerName} won the game!`;
 				// Lock the board when the game is over
 				this.computerBoardEl.style.pointerEvents = 'none';
+
+				document.getElementById('play-again-btn').classList.remove('hidden');
 			}
 		} catch (error) {
 			console.error(error.message);

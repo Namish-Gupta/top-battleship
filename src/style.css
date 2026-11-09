@@ -133,3 +133,28 @@ button:disabled {
 .drag-over {
 	background-color: #f9e2af !important; /* Highlight cell on hover */
 }
+
+/* Play Again Button Styling */
+#play-again-btn {
+	margin-top: 1.5rem;
+	padding: 0.75rem 2.5rem;
+	font-size: 1.1rem;
+	background-color: #a6e3a1; /* Matches the ship/success color */
+	color: #11111b;
+	border-radius: 8px;
+	box-shadow: 0 4px 15px rgba(166, 227, 161, 0.3);
+	transition: all 0.2s ease-in-out;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+#play-again-btn:hover {
+	transform: translateY(-3px) scale(1.02);
+	box-shadow: 0 6px 20px rgba(166, 227, 161, 0.5);
+	background-color: #b4f1b0;
+}
+
+#play-again-btn:active {
+	transform: translateY(1px) scale(0.98);
+	box-shadow: 0 2px 10px rgba(166, 227, 161, 0.4);
+}
