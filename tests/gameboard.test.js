@@ -65,4 +65,15 @@ describe('Gameboard Class', () => {
     
     expect(board.allShipsSunk()).toBe(true);
   });
+
+  test('prevents placing ships out of bounds', () => {
+    expect(() => board.placeShip(submarine, 0, 8, false)).toThrow('Out of bounds');
+    expect(() => board.placeShip(destroyer, 9, 0, true)).toThrow('Out of bounds');
+  });
+
+  test('prevents overlapping ships', () => {
+    board.placeShip(submarine, 0, 0, false);
+    // Attempt to place a destroyer crossing the submarine
+    expect(() => board.placeShip(destroyer, 0, 1, true)).toThrow('Overlap');
+  });
 });

@@ -7,6 +7,14 @@ class Gameboard {
     }
 
     placeShip(ship, row, col, isVertical) {
+        if (isVertical && row + ship.length > this.size) throw new Error('Out of bounds');
+	    if (!isVertical && col + ship.length > this.size) throw new Error('Out of bounds');
+
+        for (let i = 0; i < ship.length; i++) {
+            if (isVertical && this.grid[row + i][col] !== null) throw new Error('Overlap');
+            if (!isVertical && this.grid[row][col + i] !== null) throw new Error('Overlap');
+        }
+
         this.ships.push(ship);
         for(let i = 0; i < ship.length; i++) {
             if(isVertical) this.grid[row + i][col] = ship;

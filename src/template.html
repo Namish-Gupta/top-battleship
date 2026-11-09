@@ -10,7 +10,26 @@
 		<h1>Battleship</h1>
 		<h2 id="message-display">Attack the enemy waters!</h2>
 	</header>
-	<main class="boards-container">
+
+	<section id="setup-container" class="active">
+		<div class="controls">
+			<button id="rotate-btn">Axis: Horizontal</button>
+			<button id="start-game-btn" disabled>Start Game</button>
+		</div>
+		<div class="setup-layout">
+			<div id="setup-board" class="gameboard"></div>
+			<div id="shipyard">
+				<!-- Draggable ships data-length maps to Ship lengths -->
+				<div class="draggable-ship" draggable="true" data-length="5">Carrier (5)</div>
+				<div class="draggable-ship" draggable="true" data-length="4">Battleship (4)</div>
+				<div class="draggable-ship" draggable="true" data-length="3">Cruiser (3)</div>
+				<div class="draggable-ship" draggable="true" data-length="3">Submarine (3)</div>
+				<div class="draggable-ship" draggable="true" data-length="2">Destroyer (2)</div>
+			</div>
+		</div>
+	</section>
+
+	<main id="game-container" class="hidden boards-container">
 		<div class="board-wrapper">
 			<h3>Your Fleet</h3>
 			<div id="player-board" class="gameboard"></div>

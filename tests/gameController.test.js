@@ -1,4 +1,5 @@
 import GameController from '../src/gameController';
+import Ship from '../src/ship';
 
 describe('GameController Class', () => {
 	let game;
@@ -6,6 +7,9 @@ describe('GameController Class', () => {
 	beforeEach(() => {
 		// Instantiate a fresh game for each test
 		game = new GameController();
+
+		game.boardOne.placeShip(new Ship(3), 2, 2, false);
+		game.boardTwo.placeShip(new Ship(2), 0, 0, false);
 	});
 
 	test('initializes with a real player and a computer player', () => {
@@ -48,5 +52,22 @@ describe('GameController Class', () => {
 		game.boardTwo.receiveAttack(0, 1);
 		
 		expect(game.checkWinner()).toBe(game.playerOne);
+	});
+
+	test('initializeComputerFleet randomly places 5 valid ships', () => {
+		const freshGame = new GameController();
+		freshGame.initializeComputerFleet();
+		
+		// A fleet of 5,4,3,3,2 means exactly 17 cells should be occupied by ships
+		expect(freshGame.boardTwo.ships.length).toBe(5);
+		let occupiedCells = 0;
+		for (let row = 0; row < 10; row++) {
+			for (let col = 0; col < 10; col++) {
+				if (freshGame.boardTwo.grid[row][col] !== null) {
+					occupiedCells++;
+				}
+			}
+		}
+		expect(occupiedCells).toBe(17);
 	});
 });
